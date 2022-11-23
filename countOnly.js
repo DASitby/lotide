@@ -13,12 +13,14 @@ const countOnly = function(allItems, itemsToCount) {
       output[key] = 0
       }
     }
-    return output
   for (let i = 0; i < allItems.length; i++) {
-    if (x = allItems[i]) {
-
-    }  
+    for(x in output){
+      if (x === allItems[i]) {
+        output[x] += 1
+      }
+    }
   }
+  return output
 };
 
 console.log(countOnly(['a','a','b','c','d','e','a'],{a:true, d:true, b:false, f:true}));

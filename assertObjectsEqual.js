@@ -24,3 +24,15 @@ const eqObjects = function(objA, objB) {
   }
   return output;
 };
+
+const assertObjectsEqual = function(obj1, obj2) {
+  const inspect = require('util').inspect;
+  if (eqObjects(obj1, obj2) === true) {
+    return `✅Assertion Passed: ${inspect(obj1)} === ${inspect(obj2)}`;
+  } else {
+    return `🛑Assertion Failed: ${inspect(obj1)} !== ${inspect(obj2)}`;
+  }
+};
+
+
+console.log(assertObjectsEqual({a:1, b:2, bb:3, c:4,},{a:1, b:2, bb:3, c:4,}))

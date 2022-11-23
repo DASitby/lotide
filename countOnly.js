@@ -14,10 +14,15 @@ const countOnly = function(allItems, itemsToCount) {
       }
     }
   for (let i = 0; i < allItems.length; i++) {
-    for(x in output){
+    for (x in output) {
       if (x === allItems[i]) {
         output[x] += 1
       }
+    }
+  }
+  for (x in output){
+    if (output[x] === 0){
+      delete output[x]
     }
   }
   return output

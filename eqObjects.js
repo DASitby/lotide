@@ -6,6 +6,27 @@ const assertEqual = function(actual, expected) {
   }
 };
 
+const eqArrays = function(arr1, arr2) {
+  let results = [];
+  let output = false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] === arr2[i]) {
+      results[i] = true;
+    } else {
+      results[i] = false;
+    }
+  }
+  for (let i = 0; i < results.length; i++) {
+    if (results[i] === true) {
+      output = true;
+    } else if (results[i] === false) {
+      output = false;
+      break;
+    }
+  }
+  return output;
+};
+
 const eqObjects = function(objA, objB) {
   let output;
   for (let key in objA) {
@@ -27,3 +48,10 @@ assertEqual(eqObjects(ab, ba), true);
 
 const abc = { a: "1", b: "2", c: "3" };
 assertEqual(eqObjects(ab, abc), false);
+
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+assertEqual(eqObjects(cd, dc), true);
+
+const cd2 = { c: "1", d: ["2", 3, 4] };
+assertEqual(eqObjects(cd, cd2), false);

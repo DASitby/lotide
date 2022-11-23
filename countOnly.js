@@ -7,25 +7,25 @@ const assertEqual = function(actual, expected) {
 };
 
 const countOnly = function(allItems, itemsToCount) {
-  let output = {}
-  for (key in itemsToCount) {
-    if (itemsToCount[key] == true) {
-      output[key] = 0
-      }
+  let output = {};
+  for (let key in itemsToCount) {
+    if (itemsToCount[key] === true) {
+      output[key] = 0;
     }
+  }
   for (let i = 0; i < allItems.length; i++) {
-    for (x in output) {
+    for (let x in output) {
       if (x === allItems[i]) {
-        output[x] += 1
+        output[x] += 1;
       }
     }
   }
-  for (x in output){
-    if (output[x] === 0){
-      delete output[x]
+  for (let x in output) {
+    if (output[x] === 0) {
+      delete output[x];
     }
   }
-  return output
+  return output;
 };
 
 console.log(countOnly(['a','a','b','c','d','e','a'],{a:true, d:true, b:false, f:true}));

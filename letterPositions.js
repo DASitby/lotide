@@ -1,8 +1,8 @@
 const letterPositions = function(sentence) {
-  let output = {}
+  let output = {};
   for (let i = 0; i < sentence.length; i++) {
     if (output[sentence[i]] === undefined) {
-      output[sentence[i]] = []
+      output[sentence[i]] = [];
     }
   }
   for (let i = 0; i < sentence.length; i++) {
@@ -17,8 +17,8 @@ const letterPositions = function(sentence) {
       delete output[x];
     }
   }
-  return output
-}
+  return output;
+};
 
 
-console.log(letterPositions("lighthouse in the house"))
+console.log(letterPositions("lighthouse in the house"));

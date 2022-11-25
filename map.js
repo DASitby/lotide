@@ -33,10 +33,10 @@ const assertArraysEqual = function(arr1, arr2) {
   }
 };
 
-let testArray1 = [1,2,3,4]
-let testArray2 = ['fi', 'fie', 'foe', 'fum']
-let testArray3 = [true, true, false, false, true, false]
+let testArray1 = [1,2,3,4];
+let testArray2 = ['fi', 'fie', 'foe', 'fum'];
+let testArray3 = [true, true, false, false, true, false];
 
-console.log(assertArraysEqual(testArray1.map(x => x * 2),[2,4,6,8]))
-console.log(assertArraysEqual(testArray2.map(x => x.length),[2,3,3,3]))
-console.log(assertArraysEqual(testArray3.map(x => !x),[false,false,true,true,false,true]))
+console.log(assertArraysEqual(map(testArray1,(x => x * 2)),[2,4,6,8]));
+console.log(assertArraysEqual(map(testArray2, (x => x.length)),[2,3,3,3]));
+console.log(assertArraysEqual(map(testArray3, (x => !x)),[false,false,true,true,false,true]));

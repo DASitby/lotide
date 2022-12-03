@@ -7,6 +7,9 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
   for (let i = 0; i < arr1.length; i++) {
     if (Array.isArray[arr1[i]]) {
       if (Array.isArray[arr2[i]]) {
@@ -33,6 +36,7 @@ const eqArrays = function(arr1, arr2) {
 
 //test code
 assertEqual(eqArrays([1,2,3],[1,2,3]),true);
+assertEqual(eqArrays([1,2,3],[1,2,3,4]),false);
 assertEqual(eqArrays([1,2,3],[1,1,3]),false);
 assertEqual(eqArrays(['david','andrew','sooley'],['david','andrew','sooley']),true);
 assertEqual(eqArrays([[[2, 3]], [4]], [[[2, 3]], [4]]), true);

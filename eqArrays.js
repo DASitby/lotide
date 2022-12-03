@@ -7,27 +7,34 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(arr1, arr2) {
-  let results = [];
-  let output = false;
   for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] === arr2[i]) {
-      results[i] = true;
-    } else {
-      results[i] = false;
+    if (Array.isArray[arr1[i]]) {
+      if (Array.isArray[arr2[i]]) {
+        if (arr1[i].length === arr2[i].length) {
+          return eqArrays(arr1[i],arr2[i]);
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if (typeof arr1[i] === 'string' || typeof arr1[i] === 'number') {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    } else if (typeof arr1[i] !== typeof arr2[i]) {
+      return false;
+    } else if (arr1[i].length !== arr2[i].length) {
+      return false;
     }
   }
-  for (let i = 0; i < results.length; i++) {
-    if (results[i] === true) {
-      output = true;
-    } else if (results[i] === false) {
-      output = false;
-      break;
-    }
-  }
-  return output;
+  return true;
 };
 
 //test code
 assertEqual(eqArrays([1,2,3],[1,2,3]),true);
 assertEqual(eqArrays([1,2,3],[1,1,3]),false);
 assertEqual(eqArrays(['david','andrew','sooley'],['david','andrew','sooley']),true);
+assertEqual(eqArrays([[[2, 3]], [4]], [[[2, 3]], [4]]), true);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]),false);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]),false);

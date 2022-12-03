@@ -5,28 +5,6 @@ const assertEqual = function(actual, expected) {
     console.log(`🛑Assertion Failed: ${actual} !== ${expected}`);
   }
 };
-
-const eqArrays = function(arr1, arr2) {
-  let results = [];
-  let output = false;
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] === arr2[i]) {
-      results[i] = true;
-    } else {
-      results[i] = false;
-    }
-  }
-  for (let i = 0; i < results.length; i++) {
-    if (results[i] === true) {
-      output = true;
-    } else if (results[i] === false) {
-      output = false;
-      break;
-    }
-  }
-  return output;
-};
-
 const eqObjects = function(objA, objB) {
   let output;
   for (let key in objA) {

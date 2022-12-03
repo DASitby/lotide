@@ -30,26 +30,25 @@ const eqArrays = function(arr1, arr2) {
 const eqObjects = function(objA, objB) {
   let output;
   for (let key in objA) {
-    if (typeof objA[key] === 'string') {
+    if (typeof objA[key] === 'string' || typeof objA[key] === 'number') {
       if (objA[key] === objB[key]) {
         output = true;
       } else {
         output = false;
-        break
+        break;
       }
+    } else if (typeof objA[key] !== typeof objB[key]) {
+      output = false;
+      break;
     } else if (typeof objA[key] === 'object') {
       if (typeof objB[key] === 'object') {
-        if(objA[key].length === objB[key].length) {
-          output = eqArrays(objA[key], objB[key])
-        } else {
-          output = false
-          break
-        }
+        return (eqObjects(objA[key],objB[key]));
       }
     }
-  }
-  if (Object.keys(objA).length !== Object.keys(objB).length) {
-    output = false;
+    if (Object.keys(objA).length !== Object.keys(objB).length) {
+      output = false;
+      break;
+    }
   }
   return output;
 };
@@ -67,3 +66,9 @@ assertEqual(eqObjects(cd, dc), true);
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 assertEqual(eqObjects(cd, cd2), false);
+
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: {q:1, p: 2} }, b: 2 }, { a: 1, b: 2 }), false);
+assertEqual(eqObjects({ a: { y: 0, z: {a:{q:1, p: 2}} }, b: 2 }, { a: { y: 0, z: {a:{q:1, p: 2}} }, b: 2 }), true);

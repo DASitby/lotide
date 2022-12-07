@@ -1,6 +1,6 @@
 const tail = function(input) {
   let output = input;
-  output.slice(1);
+  output = input.slice(input.length - 1)[0];
   return output;
 };
 

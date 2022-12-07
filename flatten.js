@@ -10,7 +10,6 @@ const flatten = function(array) {
       output.push(item);
     }
   });
-  console.log(output);
   return output;
 };
 

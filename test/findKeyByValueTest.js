@@ -1,11 +1,11 @@
 const assert = require('chai').assert;
 const findKeyByValue = require('../findKeyByValue');
 
-describe(`#findKeyByValue using "const bestTVShowsByGenre = {
+describe(`#findKeyByValue\n  using "const bestTVShowsByGenre = {
   sciFi: "The Expanse",
   comedy: "Brooklyn Nine-Nine",
   drama:  "The Wire" 
-  }`, () => {
+  }" to test`, () => {
   const bestTVShowsByGenre = {
     sciFi: "The Expanse",
     comedy: "Brooklyn Nine-Nine",

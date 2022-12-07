@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const letterPositions = require('../letterPositions');
 
 describe("#letterPositions", () => {
-  it('returns 5 for [5,6,7]', () => {
+  it('returns an object containing letter positions for a long sentence', () => {
     assert.deepEqual(letterPositions("lighthouse in the house"),{
       l: [ 0 ],
       i: [ 1, 11 ],
@@ -16,11 +16,10 @@ describe("#letterPositions", () => {
       n: [ 12 ]
     });
   });
-  it('returns "hello" for ["Hello", "Lighthouse", "Labs"]', () => {
+  it('returns the correct object when compensating for capital letters', () => {
     assert.deepEqual(letterPositions("Hello"),{H:[0],e:[1],l:[2,3],o:[4]});
   });
-  it("returns 'undefined' for ''", () => {
+  it("returns an empty object for when given just a space", () => {
     assert.deepEqual(letterPositions([' ']), {});
   });
 });
-console.log(letterPositions);

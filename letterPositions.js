@@ -20,5 +20,5 @@ const letterPositions = function(sentence) {
   return output;
 };
 
-
+module.exports = letterPositions;
 console.log(letterPositions("lighthouse in the house"));
